@@ -66,7 +66,7 @@ window.addEventListener("mousemove", (e) => {
     let userAgent = navigator.userAgent.toLowerCase();
     let Android = userAgent.indexOf("android") > -1;
 
-    if (Android && mouseDown) {
+    if (Android) {
         alert("!andord");
         playerSquare.y = e.clientY
     }
