@@ -67,7 +67,6 @@ window.addEventListener("mousemove", (e) => {
     let Android = userAgent.indexOf("android") > -1;
 
     if (Android) {
-        alert("!andord");
         playerSquare.y = e.clientY
     }
 })
