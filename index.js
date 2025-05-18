@@ -62,6 +62,25 @@ window.addEventListener("keyup", (e) => {
     }
 });
 
+let mouseDown = false;
+
+window.addEventListener("mousedown", (e) => {
+    mouseDown = true;
+})
+
+window.addEventListener("mouseup", (e) => {
+    mouseDown = false;
+})
+
+window.addEventListener("mousemove", (e) => {
+    let userAgent = navigator.userAgent.toLowerCase();
+    let Android = userAgent.indexOf("android") > -1;
+
+    if (Android && mouseDown) {
+        playerSquare.y = e.clientY
+    }
+})
+
 setInterval(() => {
     if (!gameOver) {
         enemyGenerationTimePassed += 16;
