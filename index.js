@@ -1,4 +1,8 @@
 const canvas = document.getElementById("canvas");
+
+canvas.width = document.body.clientWidth;
+canvas.height = document.body.clientHeight;
+
 const ctx = canvas.getContext("2d");
 
 const lose_sfx = new Audio("./lose_sfx.mp3");
@@ -125,15 +129,10 @@ setInterval(() => {
                     enemySquaresList.splice(i, i + 1);
                     enemies_die_sfx.play();
 
-                    if (enemyGenerationTimeMS > 150) {
-                        enemyGenerationTimeMS -= 1.25;
-                    }
-                    if (enemySquaresSpeed < 40) {
-                        enemySquaresSpeed += 0.1;
-                    }
-                    if (playerSquareSpeed < 40) {
-                        playerSquareSpeed += 0.1;
-                    }
+                    
+                    enemyGenerationTimeMS -= 3.50;
+                    enemySquaresSpeed += 0.15;
+                    playerSquareSpeed += 0.15;
                     score++;
 
                     if (score > highScore) {
