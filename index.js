@@ -1,6 +1,9 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+const lose_sfx = new Audio("./lose_sfx.mp3");
+const enemies_die_sfx = new Audio("./enemies_die_sfx.wav");
+
 let gameOver = false;
 let score = 0;
 let highScore = localStorage.getItem("highScore") || 0;
@@ -120,6 +123,7 @@ setInterval(() => {
             for (let i = 0; i < enemySquaresList.length; i++) {
                 if (enemySquaresList[i].x + enemySquaresList[i].w < 0) {
                     enemySquaresList.splice(i, i + 1);
+                    enemies_die_sfx.play();
 
                     if (enemyGenerationTimeMS > 150) {
                         enemyGenerationTimeMS -= 1.25;
@@ -151,6 +155,7 @@ setInterval(() => {
                     playerSquare.y + playerSquare.h > enemySquaresList[i].y
                 ) {
                     gameOver = true;
+                    lose_sfx.play();
                 } else {
                     renderEnemySquare(
                         enemySquaresList[i].x,
